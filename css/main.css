@@ -1185,8 +1185,8 @@ section.has-dark-background {
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #fff;
-  background-color: #fff; }
+  background: #F5F5F5;
+  background-color: #F5F5F5; }
 
 .reveal {
   font-family: Calibri, Helvetica, sans-serif;
@@ -1470,6 +1470,11 @@ body {
   .reveal .slide-number span.slide-number-a {
     line-height: 50px;
     margin-right: 15px; }
+
+.reveal section img {
+  background: none;
+  border: none;
+  box-shadow: none; }
 
 /*
 Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
