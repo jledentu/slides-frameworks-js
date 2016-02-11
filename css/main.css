@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * reveal.js
  * http://lab.hakim.se/reveal-js
@@ -1176,10 +1177,8 @@ html:-moz-full-screen-ancestor {
 /**
  * A Conserto theme for reveal.js presentations.
  */
-section.has-dark-background {
-  background-color: #EA5297; }
-  section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
-    color: #fff; }
+section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
+  color: #fff; }
 
 /*********************************************
  * GLOBAL STYLES
@@ -1471,10 +1470,33 @@ body {
     line-height: 50px;
     margin-right: 15px; }
 
+.reveal section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
+
+.reveal section li {
+  padding-left: 1em;
+  text-indent: -.7em; }
+
+.reveal section li:before {
+  content: "•";
+  color: #EA5297;
+  padding-right: 1em; }
+
 .reveal section img {
   background: none;
   border: none;
   box-shadow: none; }
+
+.reveal section:first-child {
+  background-image: url("../images/conserto.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-top: 170px; }
+  .reveal section:first-child h2 {
+    text-align: left;
+    text-transform: uppercase; }
 
 /*
 Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
