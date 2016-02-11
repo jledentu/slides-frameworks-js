@@ -1470,6 +1470,9 @@ body {
     line-height: 50px;
     margin-right: 15px; }
 
+.reveal .slides {
+  text-align: left; }
+
 .reveal section ul {
   list-style-type: none;
   padding: 0;
