@@ -1492,6 +1492,11 @@ body {
   border: none;
   box-shadow: none; }
 
+.reveal section pre {
+  box-shadow: none; }
+  .reveal section pre code {
+    max-height: 100%; }
+
 .reveal section:first-child {
   background-image: url("../images/conserto.png");
   background-size: contain;
