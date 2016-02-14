@@ -12,5 +12,6 @@ Reveal.initialize({
 	slideNumber: true
 });
 
+require('highlight.js').initHighlightingOnLoad();
 require('reveal.js/plugin/markdown/marked.js');
 require('reveal.js/plugin/markdown/markdown.js').initialize();

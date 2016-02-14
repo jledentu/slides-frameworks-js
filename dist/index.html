@@ -86,6 +86,59 @@
         </section>
         <section data-markdown>
           <script type="text/template">
+            ![Backbone.js](images/backbone.png)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## Backbone.js
+
+            * Fournit une architecture Modèle-Vue
+            ![Backbone.js](images/backbone-model-view.svg)
+            * Connecte facilement les modèles à des APIs REST
+            * Simplifie la gestion d'événements
+          </script>
+        </section>
+        <section>
+          <pre>
+            <code class="javascript">
+var Cocktails = Backbone.Collection.extend({
+  url: '/cocktails'
+});
+            </code>
+          </pre>
+        </section>
+        <section>
+          <pre>
+            <code class="javascript">
+var CocktailsView = Backbone.View.extend({
+
+  el: '#cocktail-list',
+  template: _.template(appTemplate),
+
+  initialize: function() {
+    this.collection = new Cocktails();
+
+    this.listenTo(this.collection, 'reset', this.render);
+    this.listenTo(this.collection, 'change', this.render);
+
+    this.collection.fetch({reset:true});
+  },
+
+  render: function() {
+    // On rafraîchit la page
+    this.$el.html(this.template({
+      cocktails: this.collection.models
+    }));
+    return this;
+  }
+});
+            </code>
+          </pre>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
             ## Angular
           </script>
         </section>
