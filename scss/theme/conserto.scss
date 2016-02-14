@@ -73,6 +73,14 @@ section.has-dark-background {
     	border: none;
     	box-shadow: none;
     }
+
+		pre {
+			box-shadow: none;
+
+			code {
+				max-height: 100%;
+			}
+		}
   }
 
   section:first-child {
