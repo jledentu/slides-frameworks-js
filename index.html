@@ -87,11 +87,41 @@
         <section data-markdown>
           <script type="text/template">
             ## Angular
+
+            * Enrichit le HTML
           </script>
+        </section>
+        <section>
+          <pre><code class="html">
+            &lt!-- Angular --&gt
+            
+            &ltdiv ng-app=""&gt
+              &ltp&gtName: &ltinput type="text" ng-model="name"&gt&lt/p&gt
+              &ltp&gtYou wrote: {{ name }}&lt/p&gt
+            &lt/div&gt
+          </code></pre>
+          <pre><code class="html">
+            &lt!-- Pure javascript --&gt
+
+            &ltdiv&gt
+              &ltp&gtName: &ltinput id="name-input" type="text"&gt&lt/p&gt
+              &ltp id="name-result"&gt&lt/p&gt
+            &lt/div&gt
+
+            &ltscript type="text/javascript"&gt
+              var input = document.getElementById('name-input');
+              var result = document.getElementById('name-result');
+              input.addEventListener('onchange', function () {
+                result.innerHTML = "You wrote: " + input.value;
+              });
+            &lt/script&gt
+          </code></pre>
         </section>
         <section data-markdown>
           <script type="text/template">
             ## React
+
+            * Le "virtual dom"
           </script>
         </section>
         <section data-markdown>
