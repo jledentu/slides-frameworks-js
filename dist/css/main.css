@@ -1497,6 +1497,9 @@ body {
   .reveal section pre code {
     max-height: 100%; }
 
+.reveal section.center {
+  text-align: center; }
+
 .reveal section:first-child {
   background-image: url("../images/conserto.png");
   background-size: contain;
