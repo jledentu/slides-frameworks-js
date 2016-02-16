@@ -49,6 +49,35 @@
             * Mootools
           </script>
         </section>
+        <section>
+          <pre>
+            <code class="javascript">
+// Pure JavaScript
+
+var req = new XMLHttpRequest();
+req.open("GET", "result.html");
+req.onreadystatechange = function(e) {
+  if (req.readyState === 4) {
+    if (req.status >= 200 && req.status < 300 || req.status === 304) {
+      document.getElementById("result").innerHTML += req.responseText;
+    }
+  }
+};
+req.send(null);
+
+
+// jQuery
+
+$.ajax({
+  url: "result.html",
+  dataType: 'html'
+})
+.done(function(html) {
+  $("#result").append(html);
+});
+            </code>
+          </pre>
+        </section>
         <section data-markdown>
           <script type="text/template">
             À mesure que les applications sont complexes et traitent de plus en plus de données, ces bibliothèques deviennent insuffisantes :
@@ -84,7 +113,7 @@
             * Modèles
           </script>
         </section>
-        <section data-markdown>
+        <section data-markdown class="center">
           <script type="text/template">
             ![Backbone.js](images/backbone.png)
           </script>
@@ -97,6 +126,7 @@
             ![Backbone.js](images/backbone-model-view.svg)
             * Connecte facilement les modèles à des APIs REST
             * Simplifie la gestion d'événements
+            * Est léger (7.3 kb)
           </script>
         </section>
         <section>
@@ -106,6 +136,13 @@ var Cocktails = Backbone.Collection.extend({
   url: '/cocktails'
 });
             </code>
+          </pre>
+          <pre>
+GET  /cocktails/ .... collection.fetch();
+POST /cocktails/ .... collection.create();
+GET  /cocktails/1 ... model.fetch();
+PUT  /cocktails/1 ... model.save();
+DEL  /cocktails/1 ... model.destroy();
           </pre>
         </section>
         <section>
@@ -136,15 +173,25 @@ var CocktailsView = Backbone.View.extend({
             </code>
           </pre>
         </section>
-
         <section data-markdown>
+          <script type="text/template">
+          ## Qui utilise Backbone.js ?
+
+          * Reddit
+          * LinkedIn
+          * BitBucket
+          * Groupon
+          </script>
+        </section>
+
+        <section data-markdown class="center">
           <script type="text/template">
             ![AngularJS](images/angular.png)
           </script>
         </section>
         <section data-markdown>
           <script type="text/template">
-            ## Angular
+            ## AngularJS
 
             * Enrichit le HTML
             * Des applications structurées et modulables
@@ -156,56 +203,179 @@ var CocktailsView = Backbone.View.extend({
         </section>
         <section>
           <pre><code class="html">
-            &lt!-- Angular --&gt
+&lt!-- Angular --&gt
 
-            &ltdiv ng-app=""&gt
-              &ltp&gtName: &ltinput type="text" ng-model="name"&gt&lt/p&gt
-              &ltp&gtYou wrote: {{ name }}&lt/p&gt
-            &lt/div&gt
+&ltdiv ng-app=""&gt
+  &ltp&gtName: &ltinput type="text" ng-model="name"&gt&lt/p&gt
+  &ltp&gtYou wrote: {{ name }}&lt/p&gt
+&lt/div&gt
           </code></pre>
           <pre><code class="html">
-            &lt!-- Pure javascript --&gt
+&lt!-- Pure javascript --&gt
 
-            &ltdiv&gt
-              &ltp&gtName: &ltinput id="name-input" type="text"&gt&lt/p&gt
-              &ltp id="name-result"&gt&lt/p&gt
-            &lt/div&gt
+&ltdiv&gt
+  &ltp&gtName: &ltinput id="name-input" type="text"&gt&lt/p&gt
+  &ltp id="name-result"&gtYou wrote: &lt/p&gt
+&lt/div&gt
 
-            &ltscript type="text/javascript"&gt
-              var input = document.getElementById('name-input');
-              var result = document.getElementById('name-result');
-              input.addEventListener('onchange', function () {
-                result.innerHTML = "You wrote: " + input.value;
-              });
-            &lt/script&gt
+&ltscript type="text/javascript"&gt
+  var input = document.getElementById('name-input');
+  var result = document.getElementById('name-result');
+  input.addEventListener('input', function () {
+    result.innerHTML = "You wrote: " + input.value;
+  });
+&lt/script&gt
           </code></pre>
         </section>
-        <section data-markdown>
+        <section data-markdown class="center">
           <script type="text/template">
             ![Angular Exemple](images/angular-exemple.png)
           </script>
         </section>
         <section data-markdown>
-        <section data-markdown>
           <script type="text/template">
-            ## React
+          ## Qui utilise AngularJS ?
 
-            * Le "virtual dom"
+          * Paypal
+          * Weather.com
+          </script>
+        </section>
+
+        <section data-markdown class="center">
+          <script type="text/template">
+            ![Ember](images/ember.svg)
           </script>
         </section>
         <section data-markdown>
           <script type="text/template">
             ## Ember
+
+            * Data Binding
+            * Templates Handlebars
+            * Composants
+            * Propose un CLI
+            * Routeur performant
           </script>
         </section>
         <section data-markdown>
           <script type="text/template">
-            ## Vue.js
+            <pre>
+              <code>
+                ember new app
+              </code>
+            </pre>
+            <pre>
+              <code>
+                ember generate route cocktails
+              </code>
+            </pre>
+            <pre>
+              <code class="handlebars">
+                {{#each model as |cocktail|}}
+                  &lt;h2&gt;{{cocktail.name}}&lt;/h2&gt;
+                  &lt;p&gt;Rating: {{rental.owner}}&lt;/p&gt;
+                  &lt;p&gt;Description: {{rental.type}}&lt;/p&gt;
+                  {{#if rental.image}}
+                    &lt;p&gt;&lt;img src={{rental.image}} alt={{rental.type}} width="500"&gt;&lt;/p&gt;
+                  {{/if}}
+                {{/each}}
+
+                {{#link-to "about"}}About{{/link-to}}
+              </code>
+            </pre>
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+          ## Qui utilise Ember ?
+
+          * Twitch
+          * Heroku
+          * Travis CI
+          * Crunchbase
+          </script>
+        </section>
+
+        <section data-markdown class="center">
+          <script type="text/template">
+            ![React](images/react.png)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+            ## React
+
+            * Bibliothèque pour développer des vues
+            * Composants
+            * S'appuie sur le Virtual DOM
+            * Performances
+            * Universal JavaScript
+          </script>
+        </section>
+        <section>
+          <pre><code class="javascript">
+var CocktailItem = React.createClass({
+  render: function() {
+    return &lt;div&gt;{this.props.name}&lt;/div&gt;;
+  }
+});
+
+ReactDOM.render(&lt;CocktailItem name="Margarita" /&gt;,
+  document.getElementById('container'));
+          </code></pre>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+          ## Qui utilise React ?
+
+          * Facebook
+          * Netflix
+          * Instagram
+          * Whatsapp
+          </script>
+        </section>
+
+        <section data-markdown class="center">
+          <script type="text/template">
+            ![Polymer](images/polymer.png)
           </script>
         </section>
         <section data-markdown>
           <script type="text/template">
             ## Polymer
+
+            * Web components
+            * Standards du web (drafts W3C)
+            * Utilisation simple
+            * Data binding
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+          ## Qui utilise Polymer ?
+
+          * Polymer-project.org
+          * Wrike
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ## Popularité (Google Trends)
+
+          ![](images/trends1.png)
+          ![](images/trends2.png)
+          </script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+          ## Popularité (stars sur Guthub)
+
+          * Backbone.js : **24122**
+          * AngularJS : **46958**
+          * Ember : **15677**
+          * React : **36330**
+          * Polymer : **14253**
           </script>
         </section>
       </div>
